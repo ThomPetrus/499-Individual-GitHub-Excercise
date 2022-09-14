@@ -1,2 +1,2 @@
-# 499-Individual-GitHub-Excercise
-A repository containing the individual github excercise for COSC 499
+# 499-Individual-GitHub-Exercise
+A repository containing the individual github exercise for COSC 499
