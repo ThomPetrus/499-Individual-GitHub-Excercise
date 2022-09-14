@@ -6,7 +6,7 @@ Currently, an empty SpringBoot Project.
 ---
 <h3>Dependencies</h3>
 
-* Java 17+
+* Java 11
 * [Docker](https://docs.docker.com/engine/install/)
 * [Docker Compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04)
 * Maven
