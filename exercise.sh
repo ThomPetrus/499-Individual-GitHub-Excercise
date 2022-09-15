@@ -1,7 +1,7 @@
 #!/bin/bash
 
 show_help() {
-  printf "\nUsage: $0 COMMAND [--OPTION]\n\n"
+  printf "\nUsage: %s COMMAND [--OPTION]\n\n" "$0"
   printf "Commands:\n"
   printf "  package               package the application jar file\n"
   printf "  run                   run the application locally\n"
@@ -37,7 +37,7 @@ case "$1" in
     test
   ;;
   *)
-    printf "\nUnknown option for the command: $1\n"
+    printf "\nUnknown option for the command: %s\n" "$1"
     show_help
     exit 2
   ;;
