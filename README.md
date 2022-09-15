@@ -28,7 +28,18 @@ Run tests with:
 ```
 ---
 <h3>Troubleshooting</h3>
+
 * If you run into issues running the script, make sure the script has the right permissions to execute.
-* If you run into issues with docker-compose (in particular when using Ubuntu), make sure you are running docker desktop 
-and are logged in. Again, if on Ubuntu, see this [docker article](/home/petrus/Documents/IDE/idea-IC-222.3739.54/bin).
-If you still have issues, see this [SO post](https://stackoverflow.com/questions/56784492/permissionerror-errno-13-permission-denied-manage-py).
+* If you run into issues with docker-compose (in particular when using Ubuntu), make sure you are running docker desktop
+  and are logged in. Again, if on Ubuntu, see this [docker article](/home/petrus/Documents/IDE/idea-IC-222.3739.54/bin).
+  If you still have issues, see this [SO post](https://stackoverflow.com/questions/56784492/permissionerror-errno-13-permission-denied-manage-py).
+
+---
+<h3>Example Requests</h3>
+
+```
+curl --location --request GET 'http://localhost:8010/message?key=bla233333'
+curl --location --request PUT 'http://localhost:8010/message?key=bla233333&message=something'
+curl --location --request GET 'http://localhost:8010/message/all'
+curl --location --request DELETE 'http://localhost:8010/message/all'
+```
