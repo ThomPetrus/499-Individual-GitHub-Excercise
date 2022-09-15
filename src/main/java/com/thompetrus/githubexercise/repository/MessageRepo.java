@@ -19,6 +19,9 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+/**
+ * Class responsible for getting/setting messages in Redis
+ */
 @Slf4j
 @Service
 public class MessageRepo {
@@ -38,6 +41,14 @@ public class MessageRepo {
     }
 
 
+    /**
+     * Get a single message for a given key.
+     *
+     * @param key - Key to retrieve a message for
+     * @return the requested message if found
+     * @throws MessageException - if error occurs retrieving message
+     * @throws MessageNotFoundException - if message not found
+     */
     public Mono<Message> getMessage(@NonNull String key) {
         return reactiveValueOperations.get(String.format("%s:%s", NAME_SPACE, key))
                 .onErrorMap(throwable ->{
@@ -55,6 +66,12 @@ public class MessageRepo {
     }
 
 
+    /**
+     * Set a message in redis
+     *
+     * @param message - POJO of key and message
+     * @return Boolean indicating success
+     */
     public Mono<Boolean> setMessage(@NonNull Message message) {
         log.info(String.format("Updating message for key %s", message.getKey(), message));
         return reactiveValueOperations.set(String.format("%s:%s", NAME_SPACE, message.getKey()), message)
@@ -66,6 +83,11 @@ public class MessageRepo {
     }
 
 
+    /**
+     * Get all messages in cache
+     *
+     * @return All messages in cache
+     */
     public Flux<Message> getAllMessages() {
         log.info("Getting all messages in cache.");
         return redisKeyCommands.keys(ByteBuffer.wrap(String.format("%s*", NAME_SPACE).getBytes()))
@@ -75,6 +97,9 @@ public class MessageRepo {
     }
 
 
+    /**
+     * Remove all messages in cache
+     */
     public void removeAllMessages() {
         redisKeyCommands.keys(ByteBuffer.wrap(String.format("%s*", NAME_SPACE).getBytes()))
                 .flatMapMany(Flux::fromIterable)
@@ -82,4 +107,5 @@ public class MessageRepo {
                         .delete(StandardCharsets.UTF_8.decode(byteBuffer).toString()))
                 .collectList().block();
     }
+
 }

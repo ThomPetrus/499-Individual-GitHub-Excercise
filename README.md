@@ -1,7 +1,8 @@
 # 499-Individual-GitHub-Exercise
 A repository containing the individual GitHub exercise for `COSC499`
 
-Currently, an empty SpringBoot Project.
+Simple SpringBoot application with four endpoints. 
+Allows the user to set and retrieve messages from redis.
 
 ---
 <h3>Dependencies</h3>

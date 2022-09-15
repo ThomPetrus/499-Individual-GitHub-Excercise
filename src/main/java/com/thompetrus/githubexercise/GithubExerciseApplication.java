@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
+/**
+ * Yep - auto generated
+ */
 @SpringBootApplication(exclude = { RedisAutoConfiguration.class } )
 public class GithubExerciseApplication {
 

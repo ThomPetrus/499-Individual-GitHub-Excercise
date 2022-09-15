@@ -12,10 +12,20 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.HashMap;
 
 
+/**
+ * Standard handler for custom exceptions.
+ */
 @Slf4j
 @ControllerAdvice
 public class MessageExceptionHandler extends ResponseEntityExceptionHandler {
 
+    /**
+     * Handler fpr unexpected errors that could occur during set and get operations for the messages.
+     *
+     * @param e - exception thrown if anything unexpected occurs
+     * @param request - Standard request
+     * @return ResponseEntity - appropriate response
+     */
     @ExceptionHandler(MessageException.class)
     private ResponseEntity<Object> handle(MessageException e, WebRequest request) {
         HashMap<String, Object> body = new HashMap<>();
@@ -27,6 +37,13 @@ public class MessageExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
+    /**
+     * Handler fpr messages that are not found.
+     *
+     * @param e - exception thrown if
+     * @param request - Standard request
+     * @return ResponseEntity - appropriate response
+     */
     @ExceptionHandler(MessageNotFoundException.class)
     private ResponseEntity<Object> handle(MessageNotFoundException e, WebRequest request) {
         HashMap<String, Object> body = new HashMap<>();
