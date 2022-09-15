@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * POJO for Message Class persisted in Redis.
+ */
 @Data
 @Builder
 @AllArgsConstructor
