@@ -4,6 +4,7 @@ import com.thompetrus.githubexercise.repository.MessageRepo;
 import com.thompetrus.githubexercise.model.Message;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
@@ -31,6 +32,18 @@ public class MessageController {
                 .build();
 
        return messageRepo.setMessage(msg).then();
+    }
+
+
+    @GetMapping(path = "/all")
+    public Flux<Message> getAllMessages() {
+        return messageRepo.getAllMessages();
+    }
+
+
+    @DeleteMapping("/all")
+    public void removeAllMessages() {
+        messageRepo.removeAllMessages();
     }
 
 }

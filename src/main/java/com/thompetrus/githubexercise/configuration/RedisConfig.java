@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.ReactiveKeyCommands;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
@@ -35,6 +36,13 @@ public class RedisConfig {
 
 
     @Bean
+    public ReactiveKeyCommands redisKeyCommands(ReactiveRedisConnectionFactory
+                                                   reactiveRedisConnectionFactory) {
+        return reactiveRedisConnectionFactory.getReactiveConnection().keyCommands();
+    }
+
+
+    @Bean
     public ReactiveValueOperations<String, Message> reactiveMessageOperations(
         ReactiveRedisConnectionFactory factory,
         ObjectMapper redisObjectMapper
@@ -47,4 +55,5 @@ public class RedisConfig {
         RedisSerializationContext<String, Message> context = builder.value(valueSerializer).build();
         return new ReactiveRedisTemplate<>(factory, context).opsForValue();
     }
+
 }
