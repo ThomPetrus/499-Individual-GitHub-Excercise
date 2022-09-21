@@ -3,9 +3,14 @@
 show_help() {
   printf "\nUsage: %s COMMAND [--OPTION]\n\n" "$0"
   printf "Commands:\n"
+  prinff "  setup                 set up githooks\n"
   printf "  package               package the application jar file\n"
   printf "  run                   run the application locally\n"
   printf "  test                  run the tests\n"
+}
+
+setup() {
+ git config core.hooksPath githooks
 }
 
 package() {
@@ -27,6 +32,9 @@ if [ "$#" -lt 1 ]; then
 fi
 
 case "$1" in
+  setup)
+    setup
+  ;;
   run)
     run
   ;;
