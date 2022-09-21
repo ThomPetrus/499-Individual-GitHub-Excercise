@@ -2,7 +2,7 @@
 A repository containing the individual GitHub exercise for `COSC499`
 
 Simple SpringBoot application with four endpoints. 
-Allows the user to set and retrieve messages from redis.
+Allows the user to set and retrieve messages from redis!!
 
 ---
 <h3>Dependencies</h3>
